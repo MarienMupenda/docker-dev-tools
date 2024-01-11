@@ -59,6 +59,7 @@ services:
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
+      UPLOAD_LIMIT: ${PMA_UPLOAD_LIMIT}
     restart: unless-stopped
     ports:
       - "8075:80"
@@ -84,7 +85,6 @@ services:
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@example.com
       - PGADMIN_DEFAULT_PASSWORD=password
-      - UPLOAD_LIMIT= ${PMA_UPLOAD_LIMIT}
     ports:
       - "8076:80"
     networks:
