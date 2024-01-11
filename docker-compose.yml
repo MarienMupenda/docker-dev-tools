@@ -105,6 +105,18 @@ services:
       - ./minio:/data
     networks:
       - internal
+   portainer:
+     image: portainer/portainer-ce:latest
+     container_name: portainer
+     command: -H unix:///var/run/docker.sock
+     restart: always
+     ports:
+       - "9001:9000"
+       - "9443:9443"
+     volumes:
+       - /var/run/docker.sock:/var/run/docker.sock:ro
+       - /etc/localtime:/etc/localtime:ro
+       - ./portainer-data:/data
 networks:
   internal:
     external: false
